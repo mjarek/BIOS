@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOS - Build IT Outstanding Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1e5a8e;
+            --secondary-color: #2980b9;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            height: 50px;
+            filter: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .lang-switch {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .lang-switch:hover {
+            background: var(--secondary-color);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0d3d5c, #1a5276);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        section:nth-child(even):not(.hero) {
+            background: var(--bg-light);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .tech-item {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-weight: 500;
+        }
+
+        .clients-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .client-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .client-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .submit-button:hover {
+            background: var(--secondary-color);
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1rem;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMTAwIDUwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0ZXh0IHg9IjUwIiB5PSIzMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzBkM2Q1YyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QklPUzwvdGV4dD48L3N2Zz4=" alt="BIOS Logo" class="logo">
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" data-en="Home" data-pl="Start">Home</a></li>
+                <li><a href="#about" data-en="About Us" data-pl="O nas">About Us</a></li>
+                <li><a href="#services" data-en="Services" data-pl="Usługi">Services</a></li>
+                <li><a href="#tech" data-en="Technology Stack" data-pl="Technologie">Technology Stack</a></li>
+                <li><a href="#clients" data-en="Our Clients" data-pl="Klienci">Our Clients</a></li>
+                <li><a href="#contact" data-en="Contact" data-pl="Kontakt">Contact</a></li>
+                <li><button class="lang-switch" onclick="toggleLanguage()">PL</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 data-en="Build IT Outstanding Solutions" data-pl="Build IT Outstanding Solutions">Build IT Outstanding Solutions</h1>
+            <p data-en="Get It Quick! Get it done!" data-pl="Get It Quick! Get it done!">Get It Quick! Get it done!</p>
+            <a href="#contact" class="cta-button" data-en="Contact Us" data-pl="Skontaktuj się z nami">Contact Us</a>
+        </div>
+    </section>
+
+    <section id="about" style="scroll-margin-top: 70px;">
+        <div class="container">
+            <h2 data-en="About Us" data-pl="O nas">About Us</h2>
+            <div class="about-content">
+                <p data-en="BIOS is a team of experienced programmers who have been creating innovative IT solutions together for several years. We specialize in designing and implementing applications that integrate IT systems - we connect our clients' APIs with external services and build programming interfaces from scratch that enable other companies to seamlessly cooperate with our clients' systems." data-pl="BIOS to zespół doświadczonych programistów, którzy od kilku lat tworzą razem innowacyjne rozwiązania IT. Nasza specjalizacja to projektowanie i implementacja aplikacji integrujących systemy informatyczne - łączymy API klientów z zewnętrznymi usługami oraz budujemy od podstaw interfejsy programistyczne, które umożliwiają innym firmom bezproblemową współpracę z systemami naszych klientów.">
+                    BIOS is a team of experienced programmers who have been creating innovative IT solutions together for several years. We specialize in designing and implementing applications that integrate IT systems - we connect our clients' APIs with external services and build programming interfaces from scratch that enable other companies to seamlessly cooperate with our clients' systems.
+                </p>
+                <p data-en="Our portfolio includes a dedicated accounting system for automatic contractor settlements and preparation of batch files for SAP. We have extensive experience in integrations with various external platforms: from online payment systems, through official address databases, to advanced marketing tools, mailing systems for collecting reviews, and traditional correspondence generation services." data-pl="W naszym portfolio znajdują się między innymi dedykowany system księgowy do automatycznego rozliczania kontrahentów oraz przygotowywania plików wsadowych do SAP. Posiadamy bogate doświadczenie w integracjach z różnorodnymi platformami zewnętrznymi: od systemów płatności online, przez oficjalne bazy adresowe, po zaawansowane narzędzia marketingowe, systemy mailingowe do zbierania opinii oraz usługi generowania tradycyjnej korespondencji.">
+                    Our portfolio includes a dedicated accounting system for automatic contractor settlements and preparation of batch files for SAP. We have extensive experience in integrations with various external platforms: from online payment systems, through official address databases, to advanced marketing tools, mailing systems for collecting reviews, and traditional correspondence generation services.
+                </p>
+                <p data-en="We have experience in developing websites based on the Episerver CMS system and in implementing projects for companies from the insurance, call center and real estate sectors. Regardless of the industry - we are ready to meet any integration challenge." data-pl="Mamy doświadczenie w rozwoju stron internetowych opartych na systemie CMS Episerver oraz w realizacji projektów dla firm z sektora ubezpieczeniowego, call center i nieruchomości. Niezależnie od branży - jesteśmy gotowi sprostać każdemu wyzwaniu integracyjnemu.">
+                    We have experience in developing websites based on the Episerver CMS system and in implementing projects for companies from the insurance, call center and real estate sectors. Regardless of the industry - we are ready to meet any integration challenge.
+                </p>
+                <p data-en="Our team consists of top-level specialists: backend programmers specializing in .NET, MSSQL and Oracle database experts, frontend developers, and fullstack developers. Every solution is thoroughly tested by our QA specialists - both manually and with advanced automated tests. We also have experienced Product Owners in our team who can professionally manage your project." data-pl="Nasz zespół tworzą specjaliści na najwyższym poziomie: programiści backend specjalizujący się w .NET, eksperci baz danych MSSQL i Oracle, frontend developerzy oraz fullstack developerzy. Każde rozwiązanie jest szczegółowo testowane przez naszych specjalistów QA - zarówno manualnie, jak i za pomocą zaawansowanych testów automatycznych. W zespole posiadamy również doświadczonych Product Ownerów, którzy mogą profesjonalnie zarządzać Twoim projektem.">
+                    Our team consists of top-level specialists: backend programmers specializing in .NET, MSSQL and Oracle database experts, frontend developers, and fullstack developers. Every solution is thoroughly tested by our QA specialists - both manually and with advanced automated tests. We also have experienced Product Owners in our team who can professionally manage your project.
+                </p>
+                <p data-en="We offer not only programming services, but also comprehensive IT consulting. If you need to design a business process, plan application architecture, or simply get professional advice - we will gladly support you. We believe in an honest approach to the client - sometimes a better solution is to use an existing market product rather than building from scratch. We are not afraid to say it directly and guide the client to the most cost-effective path." data-pl="Oferujemy nie tylko usługi programistyczne, ale również kompleksowy konsulting IT. Jeśli potrzebujesz zaprojektowania procesu biznesowego, zaplanowania architektury aplikacji czy po prostu fachowej konsultacji - chętnie Cię wspomożemy. Wierzymy w uczciwe podejście do klienta - czasem lepszym rozwiązaniem jest skorzystanie z gotowego produktu rynkowego niż budowa od zera. Nie boimy się powiedzieć tego wprost i naprowadzić klienta na najbardziej opłacalną ścieżkę.">
+                    We offer not only programming services, but also comprehensive IT consulting. If you need to design a business process, plan application architecture, or simply get professional advice - we will gladly support you. We believe in an honest approach to the client - sometimes a better solution is to use an existing market product rather than building from scratch. We are not afraid to say it directly and guide the client to the most cost-effective path.
+                </p>
+                <p data-en="We are fluent in English, which has allowed us to successfully cooperate with clients from the Scandinavian market. We are flexible - both short-term projects and long-term cooperation are equally interesting to us. We follow the latest technological trends, including the development of artificial intelligence, using modern tools to improve our work and achieve better results for clients." data-pl="Biegle posługujemy się językiem angielskim, co pozwoliło nam skutecznie współpracować z klientami z rynku skandynawskiego. Jesteśmy elastyczni - zarówno krótkoterminowe projekty, jak i długofalowa współpraca są dla nas równie interesujące. Śledzimy najnowsze trendy technologiczne, w tym rozwój sztucznej inteligencji, wykorzystując nowoczesne narzędzia do usprawnienia naszej pracy i osiągania lepszych rezultatów dla klientów.">
+                    We are fluent in English, which has allowed us to successfully cooperate with clients from the Scandinavian market. We are flexible - both short-term projects and long-term cooperation are equally interesting to us. We follow the latest technological trends, including the development of artificial intelligence, using modern tools to improve our work and achieve better results for clients.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" style="scroll-margin-top: 70px;">
+        <div class="container">
+            <h2 data-en="Our Services" data-pl="Nasze usługi">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3 data-en="API Integrations" data-pl="Integracje API">API Integrations</h3>
+                    <p data-en="We create applications that integrate your API with external systems. We also build APIs from scratch, enabling other companies to easily integrate with your services." data-pl="Tworzymy aplikacje integrujące Twoje API z zewnętrznymi systemami. Budujemy również API od podstaw, umożliwiając innym firmom łatwą integrację z Twoimi usługami.">
+                        We create applications that integrate your API with external systems. We also build APIs from scratch, enabling other companies to easily integrate with your services.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <h3 data-en="Dedicated Systems" data-pl="Systemy dedykowane">Dedicated Systems</h3>
+                    <p data-en="We design and implement dedicated systems tailored to your company's specific needs, including accounting systems, CRM, and industry-specific solutions." data-pl="Projektujemy i wdrażamy dedykowane systemy dostosowane do specyficznych potrzeb Twojej firmy, w tym systemy księgowe, CRM, czy rozwiązania branżowe.">
+                        We design and implement dedicated systems tailored to your company's specific needs, including accounting systems, CRM, and industry-specific solutions.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <h3 data-en="Business Consulting" data-pl="Konsulting biznesowy">Business Consulting</h3>
+                    <p data-en="We offer consulting, process design, and application planning. Sometimes it's better to use an existing market solution - we'll advise you on the best path." data-pl="Oferujemy konsultacje, projektowanie procesów i planowanie aplikacji. Czasem lepiej skorzystać z gotowego rozwiązania rynkowego - doradzimy Ci najlepszą ścieżkę.">
+                        We offer consulting, process design, and application planning. Sometimes it's better to use an existing market solution - we'll advise you on the best path.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <h3 data-en="Software Development" data-pl="Rozwój oprogramowania">Software Development</h3>
+                    <p data-en="We develop existing applications, add new features, and modernize legacy systems. We work with various technologies and platforms." data-pl="Rozwijamy istniejące aplikacje, dodajemy nowe funkcjonalności i modernizujemy legacy systems. Pracujemy z różnymi technologiami i platformami.">
+                        We develop existing applications, add new features, and modernize legacy systems. We work with various technologies and platforms.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <h3 data-en="Quality Assurance" data-pl="Zapewnienie jakości">Quality Assurance</h3>
+                    <p data-en="Every solution is thoroughly tested by our QA specialists - manually and with automated tests, ensuring the highest quality." data-pl="Każde rozwiązanie jest dokładnie testowane przez naszych specjalistów QA - manualnie oraz za pomocą testów automatycznych, zapewniając najwyższą jakość.">
+                        Every solution is thoroughly tested by our QA specialists - manually and with automated tests, ensuring the highest quality.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <h3 data-en="Modern Technologies" data-pl="Nowoczesne technologie">Modern Technologies</h3>
+                    <p data-en="We use AI and modern tools that improve our work and bring better results for clients. The world is evolving - so are we." data-pl="Wykorzystujemy AI i nowoczesne narzędzia, które usprawniają naszą pracę i przynoszą lepsze rezultaty dla klientów. Świat się rozwija - my również.">
+                        We use AI and modern tools that improve our work and bring better results for clients. The world is evolving - so are we.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tech" style="scroll-margin-top: 70px;">
+        <div class="container">
+            <h2 data-en="Technology Stack" data-pl="Stack technologiczny">Technology Stack</h2>
+            <div class="tech-stack">
+                <span class="tech-item">.NET / C#</span>
+                <span class="tech-item">MSSQL</span>
+                <span class="tech-item">Oracle</span>
+                <span class="tech-item">JavaScript</span>
+                <span class="tech-item">React</span>
+                <span class="tech-item">Angular</span>
+                <span class="tech-item">HTML/CSS</span>
+                <span class="tech-item">Episerver CMS</span>
+                <span class="tech-item">REST API</span>
+                <span class="tech-item">Azure</span>
+                <span class="tech-item">Azure DevOps</span>
+                <span class="tech-item">Git</span>
+                <span class="tech-item">CI/CD</span>
+                <span class="tech-item">Grafana</span>
+                <span class="tech-item">Prometheus</span>
+                <span class="tech-item">SSRS</span>
+                <span class="tech-item">Automated Testing</span>
+                <span class="tech-item">SAP Integration</span>
+                <span class="tech-item">Agile</span>
+                <span class="tech-item">Scrum</span>
+                <span class="tech-item">AI Tools</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="clients" style="scroll-margin-top: 70px;">
+        <div class="container">
+            <h2 data-en="Our Clients" data-pl="Nasi klienci">Our Clients</h2>
+            <div class="clients-list">
+                <div class="client-card">
+                    <h3 data-en="Insurance Industry" data-pl="Branża ubezpieczeniowa">Insurance Industry</h3>
+                    <p data-en="We developed software for insurance companies, creating dedicated solutions supporting business processes." data-pl="Rozwijaliśmy oprogramowanie dla firm ubezpieczeniowych, tworząc dedykowane rozwiązania wspierające procesy biznesowe.">
+                        We developed software for insurance companies, creating dedicated solutions supporting business processes.
+                    </p>
+                </div>
+                <div class="client-card">
+                    <h3 data-en="Call Center" data-pl="Call Center">Call Center</h3>
+                    <p data-en="We created systems for the call center industry, optimizing customer service processes and integrating various communication platforms." data-pl="Tworzyliśmy systemy dla branży call center, optymalizując procesy obsługi klienta i integrując różne platformy komunikacyjne.">
+                        We created systems for the call center industry, optimizing customer service processes and integrating various communication platforms.
+                    </p>
+                </div>
+                <div class="client-card">
+                    <h3 data-en="Real Estate" data-pl="Nieruchomości">Real Estate</h3>
+                    <p data-en="We supported real estate companies in digitizing processes and integrating with external platforms." data-pl="Wspieraliśmy firmy z branży nieruchomości w digitalizacji procesów i integracji z zewnętrznymi platformami.">
+                        We supported real estate companies in digitizing processes and integrating with external platforms.
+                    </p>
+                </div>
+                <div class="client-card">
+                    <h3 data-en="Scandinavian Market" data-pl="Rynek skandynawski">Scandinavian Market</h3>
+                    <p data-en="We worked with clients from Scandinavian countries, providing services in English at the highest level." data-pl="Współpracowaliśmy z klientami z krajów skandynawskich, świadcząc usługi w języku angielskim na najwyższym poziomie.">
+                        We worked with clients from Scandinavian countries, providing services in English at the highest level.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="scroll-margin-top: 70px;">
+        <div class="container">
+            <h2 data-en="Contact" data-pl="Kontakt">Contact</h2>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label data-en="Full Name:" data-pl="Imię i nazwisko:">Full Name:</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label data-en="Email:" data-pl="Email:">Email:</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label data-en="Subject:" data-pl="Temat:">Subject:</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label data-en="Message:" data-pl="Wiadomość:">Message:</label>
+                    <textarea required></textarea>
+                </div>
+                <button type="submit" class="submit-button" data-en="Send Message" data-pl="Wyślij wiadomość">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 BIOS - Build IT Outstanding Solutions. <span data-en="All rights reserved." data-pl="Wszelkie prawa zastrzeżone.">All rights reserved.</span></p>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'pl' : 'en';
+            const langButton = document.querySelector('.lang-switch');
+            langButton.textContent = currentLang === 'en' ? 'PL' : 'EN';
+            
+            document.querySelectorAll('[data-pl][data-en]').forEach(element => {
+                element.textContent = currentLang === 'en' ? element.getAttribute('data-en') : element.getAttribute('data-pl');
+            });
+
+            document.documentElement.lang = currentLang;
+        }
+
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert(currentLang === 'en' ? 'Thank you for your message! We will contact you soon.' : 'Dziękujemy za wiadomość! Skontaktujemy się wkrótce.');
+            event.target.reset();
+        }
+
+        function scrollToSection(sectionId) {
+            event.preventDefault();
+            event.stopPropagation();
+            const target = document.querySelector(sectionId);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                const navLinks = document.getElementById('navLinks');
+                navLinks.classList.remove('active');
+            }
+            return false;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const href = this.getAttribute('href');
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        const navLinks = document.getElementById('navLinks');
+                        navLinks.classList.remove('active');
+                    }
+                    return false;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
